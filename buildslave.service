@@ -1,0 +1,15 @@
+[Unit]
+Description=Buildbot slave service
+After=network.target
+
+[Service]
+User=builder
+Group=builder
+WorkingDirectory=/home/builder/llvm-avr-linux
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
+ExecStart=/usr/bin/buildslave start \
+          --nodaemon
+
+[Install]
+WantedBy=multi-user.target
+
